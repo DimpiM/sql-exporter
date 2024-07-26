@@ -6,7 +6,6 @@ import Helper from './helper';
 
 import Database from './database';
 import TableExport from './table-export';
-import { join } from 'path';
 
 export const ApiController = (): void=> {
   ipcMain.handle('test-db-connection', async (_event, dbConfig: DatabaseApi): Promise<boolean> => {
@@ -59,7 +58,7 @@ export const ApiController = (): void=> {
     shell.openPath(settings.exportPath);
   });
 
-  ipcMain.handle('open-help', (event: Electron.IpcMainInvokeEvent): void => {
+  ipcMain.handle('open-help', (_event: Electron.IpcMainInvokeEvent): void => {
 
     const win = new BrowserWindow({
       width: 400,
