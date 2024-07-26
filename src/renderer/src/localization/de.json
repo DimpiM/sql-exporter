@@ -1,0 +1,38 @@
+{
+  "app": {
+    "title": "SQL-Exporter"
+  },
+  "dbSelector": {
+    "dbSelectText": "Datenbank auswählen",
+    "btnConnect": "Verbinden",
+    "btnDisconnect": "Trennen",
+    "noDbText": "Keine Datenbanken gespeichert"
+  },
+  "export": {
+    "path": "Exportpfad",
+    "btnStartExport": "Exportieren",
+    "progress": {
+      "tableInfo": "Export {{tableName}} ({{tableProgress}}/{{tableCount}})",
+      "rowInfo": "{{rowProgress}} rows von {{rowCount}} exportiert",
+      "successfullyFinished": "Erfolgreich exportiert",
+      "openFolder": "Ordner öffnen",
+      "close": "Schließen"
+    }
+  },
+  "manageDb": {
+    "title": "Datenbanken verwalten",
+    "btnFinish": "Fertig",
+    "listHeader": "Datenbanken",
+    "tbxDisplayName": "Anzeigename",
+    "tbxServer": "Server",
+    "tbxUsername": "Benutzername",
+    "tbxPassword": "Passwort",
+    "tbxDatabase": "Datenbank",
+    "btnSaveDbEntry": "Speichern",
+    "btnTestConnection": "Verbindung prüfen"
+  },
+  "tableOverview": {
+    "setColumnAsKey": "Spalte {{column}} als unique Key verwenden",
+    "unsetColumnAsKey": "{{column}} - Unique Key entfernen"
+  }
+}

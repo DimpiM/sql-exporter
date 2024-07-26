@@ -1,0 +1,19 @@
+{
+  "exportPath":"home/foo",
+  "databases": [
+    {
+      "name": "db1",
+      "server": "localhost",
+      "username": "sa",
+      "password": "password",
+      "database": "db1"
+    },
+    {
+      "name": "test Database",
+      "server": "server test",
+      "username": "userName test",
+      "password": "password test",
+      "database": "test"
+    }
+  ]
+}
