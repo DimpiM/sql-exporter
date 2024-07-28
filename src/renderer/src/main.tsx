@@ -5,7 +5,7 @@ import '@fontsource/roboto/700.css';
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from './App'
@@ -71,10 +71,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <HashRouter>
           <CssBaseline />
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>
