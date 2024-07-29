@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css';
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter } from "react-router-dom";
+import { SnackbarProvider } from 'notistack';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from './App'
@@ -71,10 +72,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <HashRouter>
-          <CssBaseline />
-          <App />
-        </HashRouter>
+        <SnackbarProvider maxSnack={3}>
+          <HashRouter>
+            <CssBaseline />
+            <App />
+          </HashRouter>
+        </SnackbarProvider>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>

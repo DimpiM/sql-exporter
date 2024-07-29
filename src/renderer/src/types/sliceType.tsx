@@ -37,3 +37,14 @@ export interface ExportProgressInitState {
   dialogOpen: boolean;
   exportProgress: ExportProgressApi;
 }
+
+export interface UpdateCheckerInitState {
+  updateStatus: 'not-available' | 'available' | 'downloading' | 'downloaded' | 'error';
+  newVersion: string;
+  progress: UpdateProgressState;
+}
+
+export interface UpdateProgressState {
+  percent: number;
+  bytesPerSecond: number;
+}

@@ -5,6 +5,7 @@ import { apiBase } from "./api/apiBase";
 import { manageDbSlice } from "./slice/manageDbSlice";
 import { databaseSlice } from "./slice/databaseSlice";
 import { exportProgressSlice } from "./slice/exportProgressSlice";
+import { updateCheckerSlice } from "./slice/updateCheckerSlice";
 
 export const store = configureStore({
   devTools: true,
@@ -13,6 +14,7 @@ export const store = configureStore({
     [manageDbSlice.name]: manageDbSlice.reducer,
     [databaseSlice.name]: databaseSlice.reducer,
     [exportProgressSlice.name]: exportProgressSlice.reducer,
+    [updateCheckerSlice.name]: updateCheckerSlice.reducer,
     [apiBase.reducerPath]: apiBase.reducer,
   },
   middleware: (getDefaultMiddleware) => {

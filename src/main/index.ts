@@ -1,12 +1,18 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { autoUpdater } from 'electron-updater'
 import icon from '../../resources/icon.png?asset'
 import { ApiController } from './api'
+import { CheckUpdateApi } from './checkUpdateApi'
+
+let mainWindow: BrowserWindow | null = null
+autoUpdater.autoDownload = false
+autoUpdater.autoInstallOnAppQuit = false
 
 function createWindow(): void {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
     show: false,
@@ -19,7 +25,7 @@ function createWindow(): void {
   })
 
   mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
+    mainWindow!.show()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -50,10 +56,6 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
-  ApiController();
-
   createWindow()
 
   app.on('activate', function () {
@@ -61,6 +63,11 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+
+  // IPC test
+  ipcMain.on('ping', () => console.log('pong'))
+  ApiController();
+  CheckUpdateApi(mainWindow);
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

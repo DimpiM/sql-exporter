@@ -2,6 +2,12 @@
   "app": {
     "title": "SQL-Exporter"
   },
+  "updateChecker": {
+    "available": "Neue Version (v{{version}}) verfügbar",
+    "download": "Herunterladen",
+    "downloadFinished": "Download abgeschlossen",
+    "restart": "Neustarten"
+  },
   "dbSelector": {
     "dbSelectText": "Datenbank auswählen",
     "btnConnect": "Verbinden",

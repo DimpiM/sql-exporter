@@ -5,6 +5,10 @@ import { DatabaseApi, DbTableApi } from '../types/apiTypes'
 
 // Custom APIs for renderer
 const api: API = {
+  check4Update: (): Promise<void> => ipcRenderer.invoke('check-update:check-4-update'),
+  downloadUpdate: (): Promise<void> => ipcRenderer.invoke('check-update:download-update'),
+  installUpdate: (): Promise<void> => ipcRenderer.invoke('check-update:install-update'),
+
   openDialog: (): Promise<OpenDialogReturnValue> => ipcRenderer.invoke('open-dialog'),
   openFolder: (): Promise<void> => ipcRenderer.invoke('open-folder'),
   openHelp: (): Promise<void> => ipcRenderer.invoke('open-help'),

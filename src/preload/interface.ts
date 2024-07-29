@@ -2,6 +2,10 @@ import { OpenDialogReturnValue } from "electron";
 import { DatabaseApi, DbTableApi } from "../types/apiTypes";
 
 export interface API {
+  check4Update: () => Promise<void>,
+  downloadUpdate: () => Promise<void>,
+  installUpdate: () => Promise<void>,
+
   openDialog: () => Promise<OpenDialogReturnValue>,
   openFolder: () => Promise<void>,
   openHelp: () => Promise<void>,
