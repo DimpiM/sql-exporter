@@ -1,3 +1,4 @@
+![xxx](abc.png)
 # sql-exporter
 FooBar
 An Electron application with React and TypeScript
