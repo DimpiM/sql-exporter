@@ -1,6 +1,8 @@
+![xxx](abc.png)
 # sql-exporter
 FooBar
 An Electron application with React and TypeScript
+![abc](https://cdn.iconscout.com/icon/premium/png-256-thumb/email-772-529163.png)
 
 ## Recommended IDE Setup
 
