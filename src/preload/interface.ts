@@ -23,4 +23,7 @@ export interface API {
   exportTables: (dbConfigId: string) => Promise<boolean>
 }
 
-
+export interface EnvVar {
+  ELECTRON_RENDERER_URL: string | undefined
+  test: string | undefined
+}

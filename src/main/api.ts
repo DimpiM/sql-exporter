@@ -1,4 +1,6 @@
-import { ipcMain, dialog, OpenDialogReturnValue, shell, BrowserWindow } from 'electron'
+import { ipcMain, dialog, OpenDialogReturnValue, shell } from 'electron'
+/* import { is } from '@electron-toolkit/utils'
+import { join } from 'path' */
 import fs, { promises as fsProm} from 'fs';
 //import sql from 'mssql'
 import { DatabaseApi, DbTableApi, } from "../types/apiTypes";
@@ -59,17 +61,20 @@ export const ApiController = (): void=> {
   });
 
   ipcMain.handle('open-help', (_event: Electron.IpcMainInvokeEvent): void => {
-
-    const win = new BrowserWindow({
+    /* const win = new BrowserWindow({
       width: 400,
       height: 300,
       parent: BrowserWindow.getFocusedWindow()!,
+      webPreferences: {
+        preload: join(__dirname, '../preload/index.js'),
+        sandbox: false
+      }
     });
-    win.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/help');
-    /* if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-      win.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/help');
+
+    if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+      win.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/help.html')
     } else {
-      win.loadFile(join(__dirname, '../renderer/index.html'))
+      win.loadFile(join(__dirname, '../renderer/help.html'))
     } */
   });
 

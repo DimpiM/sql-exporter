@@ -5,11 +5,11 @@ import '@fontsource/roboto/700.css';
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { HashRouter } from "react-router-dom";
 import { SnackbarProvider } from 'notistack';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from './App'
+import HelpMain from './pages/helpMain';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import './localization/i18n';
@@ -68,15 +68,19 @@ const theme = createTheme({
     },
 });
 
+const appElement = document.getElementById('app') as HTMLElement;
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <SnackbarProvider maxSnack={3}>
-          <HashRouter>
             <CssBaseline />
+            {appElement.innerText === 'app' &&
             <App />
-          </HashRouter>
+            }
+            {appElement.innerText === 'help' &&
+            <HelpMain />
+            }
         </SnackbarProvider>
       </ThemeProvider>
     </Provider>

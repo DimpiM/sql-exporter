@@ -6,7 +6,10 @@
     "available": "Neue Version (v{{version}}) verfügbar",
     "download": "Herunterladen",
     "downloadFinished": "Download abgeschlossen",
-    "restart": "Neustarten"
+    "restart": "Neustarten",
+    "newVersionAvailable": "Neue Version verfügbar",
+    "currentVersion": "Aktuelle Version: ",
+    "newVersion": "Neue Version: "
   },
   "dbSelector": {
     "dbSelectText": "Datenbank auswählen",

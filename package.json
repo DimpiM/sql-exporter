@@ -1,6 +1,6 @@
 {
   "name": "sql-exporter",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An Application to facilitate the export of SQL data",
   "main": "./out/main/index.js",
   "author": "Martin Dimperl",
@@ -47,6 +47,7 @@
     "@mui/x-tree-view": "^7.11.0",
     "@reduxjs/toolkit": "^2.2.6",
     "@types/mssql": "^9.1.5",
+    "@uiw/react-markdown-preview": "^5.1.2",
     "electron-updater": "^6.1.7",
     "i18next": "^23.12.1",
     "lodash": "^4.17.21",

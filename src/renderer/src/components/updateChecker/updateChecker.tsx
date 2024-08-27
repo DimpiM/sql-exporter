@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { AppDispatch, RootState } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
 
 import { useSnackbar, closeSnackbar, OptionsObject } from 'notistack'
@@ -9,12 +9,31 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Modal from '@mui/material/Modal';
 
-import { AppDispatch, RootState } from '../../redux/store';
 import { setUpdateAvailable, setUpdateDownloading, setUpdateFinished } from '@renderer/redux/slice/updateCheckerSlice';
 import { ProgressInfo, UpdateInfo } from 'electron-updater';
+import ModalUpdateAvailable from './modalUpdateAvailable';
+import Paper from '@mui/material/Paper';
 
-export const UpdateChecker = (): JSX.Element  => {
+
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '70%',
+  height: '50%',
+  p: 2,
+  borderRadius: '24px',
+};
+
+type UpdateCheckerProps = {
+  children?: React.ReactNode;
+}
+export const UpdateChecker = (
+  { children }: UpdateCheckerProps
+): JSX.Element  => {
   const { t } = useTranslation()
   const { enqueueSnackbar } = useSnackbar()
 
@@ -68,7 +87,9 @@ export const UpdateChecker = (): JSX.Element  => {
   useEffect(() => {
     closeSnackbar()
     if (['available', 'downloading', 'downloaded'].includes(update.updateStatus)) {
+      if(false) {
       enqueueSnackbar(getSnackbarContent(), {...snackbarOptions, key: update.updateStatus})
+      }
     }
   }, [update.updateStatus])
 
@@ -149,7 +170,23 @@ export const UpdateChecker = (): JSX.Element  => {
     return(<></>)
   }
 
-  return (<Outlet />)
+  return (
+    <>
+      {children}
+      {['available', 'downloading', 'downloaded'].includes(update.updateStatus) &&
+        <Modal
+          open={['available', 'downloading', 'downloaded'].includes(update.updateStatus)}
+        >
+          <Paper elevation={3} sx={{...modalStyle}}>
+            <ModalUpdateAvailable
+              onDownloadUpdateClick={handleDownloadUpdate}
+              onRestartClick={handleRestartUpdate}
+            />
+          </Paper>
+        </Modal>
+      }
+    </>
+  )
 }
 
 export default UpdateChecker

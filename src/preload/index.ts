@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer, OpenDialogReturnValue } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import { API } from './interface'
+import { API, EnvVar } from './interface'
 import { DatabaseApi, DbTableApi } from '../types/apiTypes'
 
 // Custom APIs for renderer
@@ -26,19 +26,30 @@ const api: API = {
   exportTables: (dbConfigId: string): Promise<boolean> => ipcRenderer.invoke('export-tables', dbConfigId),
 }
 
+const envVar: EnvVar = {
+  ELECTRON_RENDERER_URL: process.env.ELECTRON_RENDERER_URL,
+  test: __dirname
+}
+
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
 // just add to the DOM global.
 if (process.contextIsolated) {
   try {
+    console.log('env', process.env.ELECTRON_RENDERER_URL);
     contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('api', api)
+    contextBridge.exposeInMainWorld('envVar', envVar)
   } catch (error) {
     console.error(error)
   }
 } else {
+
+  console.log('env2', process.env.ELECTRON_RENDERER_URL);
   // @ts-ignore (define in dts)
   window.electron = electronAPI
   // @ts-ignore (define in dts)
   window.api = api
+  // @ts-ignore (define in dts)
+  window.envVar = envVar
 }

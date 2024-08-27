@@ -3,6 +3,7 @@ import { UpdateCheckerInitState } from "@renderer/types/sliceType"
 
 const initState: UpdateCheckerInitState = {
   updateStatus: 'not-available',
+  //updateStatus: 'downloaded',
   newVersion: '',
   progress: {
     percent: 0,

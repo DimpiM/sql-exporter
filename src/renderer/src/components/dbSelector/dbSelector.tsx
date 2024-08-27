@@ -19,7 +19,7 @@ import {
   useLazyTablesQuery
 } from '../../redux/api/databaseApi';
 import { AppDispatch, RootState } from '../../redux/store';
-import { setOpenManageDbDialog } from '../../redux/appSlice';
+import { setOpenHelpDialog, setOpenManageDbDialog } from '../../redux/appSlice';
 
 import { Database } from '../../types/appType';
 import {
@@ -28,6 +28,7 @@ import {
   setDisconnect,
   setTables
 } from '../../redux/slice/databaseSlice';
+import HelpMain from '@renderer/pages/helpMain';
 
 export const DbSelector = (): JSX.Element  => {
   const { t } = useTranslation();
@@ -57,7 +58,8 @@ export const DbSelector = (): JSX.Element  => {
   }
 
   const handleOpenHelpClick = () => {
-    window.api.openHelp();
+    //window.api.openHelp();
+    dispatch(setOpenHelpDialog(true));
   }
 
   useEffect(() => {
@@ -141,6 +143,12 @@ export const DbSelector = (): JSX.Element  => {
       <Modal open={appState.openManageDbDialog}>
         <Box>
           <ManageDb />
+        </Box>
+      </Modal>
+
+      <Modal open={appState.openHelpDialog}>
+        <Box>
+          <HelpMain />
         </Box>
       </Modal>
     </>

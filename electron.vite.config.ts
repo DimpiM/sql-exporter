@@ -15,6 +15,19 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
-    plugins: [react()]
+    plugins: [
+      react(),
+      // Custom plugin to load markdown files
+      {
+        name: "markdown-loader",
+        transform(code, id) {
+          if (id.slice(-3) === ".md") {
+            // For .md files, get the raw content
+            return `export default ${JSON.stringify(code)};`;
+          }
+          return null;
+        }
+      }
+    ]
   }
 })

@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useDispatch } from 'react-redux';
+import { AppDispatch } from "@renderer/redux/store";
 
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
@@ -9,7 +10,6 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { AppDispatch } from "@renderer/redux/store";
 import { setOpenManageDbDialog } from '../../../redux/appSlice';
 import DbList from "./dbList";
 import DbEntry from "./dbEntry";

@@ -1,9 +1,10 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
-import { API } from './interface'
+import { API, EnvVar } from './interface'
 
 declare global {
   interface Window {
     electron: ElectronAPI
-    api: API
+    api: API,
+    envVar: EnvVar
   }
 }
